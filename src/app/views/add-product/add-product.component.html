@@ -5,6 +5,12 @@
         </div>
     </div>
     <div class="content">
-        <app-table *ngIf="listaProductos && listaProductos.length > 0" [products]="listaProductos" ></app-table>
+        <div class="content__header">
+            <h1>Formulario de Registro</h1>
+            <hr>
+        </div>
+        <div class="content__form">
+            <app-form></app-form>
+        </div>
     </div>
 </div>

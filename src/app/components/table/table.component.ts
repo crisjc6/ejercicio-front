@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ProductInterface } from '../../interfaces/product.interface';
 
 @Component({
@@ -6,14 +6,26 @@ import { ProductInterface } from '../../interfaces/product.interface';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent {
+export class TableComponent  implements OnInit{
+  @Input() products: ProductInterface[] = [];
   buttonText: string = 'Agregar';
   resultsPerPage = 5;
   maxResults = 50;
-  @Input() products: ProductInterface[] = [];
+  filteredItems: ProductInterface[] = [];
+  searchValue: string = '';
 
-  onClick(){
-    console.log('click');
+  constructor() {
+  }
+  ngOnInit(): void {
+    this.filteredItems = this.products
+  }
+  
+  applyFilter() {
+    this.products = this.searchValue
+    ? this.products.filter(item =>
+        item.name.toLowerCase().includes(this.searchValue.toLowerCase())
+      )
+    : this.filteredItems;
   }
 
 }

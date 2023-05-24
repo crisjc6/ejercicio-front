@@ -1,7 +1,7 @@
 <div class="container">
     <div class="top">
-        <input type="text" class="search-input" placeholder="Search...">
-        <button (click)="onClick()">{{ buttonText }}</button>
+        <input type="text" class="search-input" [(ngModel)]="searchValue" placeholder="Search..." (keyup)="applyFilter()">
+        <button routerLink="add-product">{{ buttonText }}</button>
     </div>
     <div class="list">
         <table>
@@ -32,7 +32,7 @@
                         <div class="dropdown">
                             <span><i class="material-icons">more_vert</i></span>
                             <div class="dropdown-content">
-                                <a href="#">Editar</a>
+                                <a routerLink="update-product">Editar</a>
                                 <a href="#">Eliminar</a>
                             </div>
                         </div>

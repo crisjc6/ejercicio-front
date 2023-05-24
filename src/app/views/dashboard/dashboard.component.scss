@@ -1,17 +1,3 @@
-.container {
-    width: 100%; /* Ancho del contenedor */
-    max-width: 1200px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centrar horizontalmente el contenedor */
-    padding: 20px; /* Espacio interno del contenedor */
-}
-
-.header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 .content {
     margin: 80px 60px;
 }
