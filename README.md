@@ -1,5 +1,22 @@
 # EjercicioFront
 
+## Dasboard List Products
+![image](https://github.com/crisjc6/ejercicio-front/assets/50051312/13ebe6c2-4807-4efd-b3aa-c172552c5377)
+
+## Form de registro
+![image](https://github.com/crisjc6/ejercicio-front/assets/50051312/5c4a3d5b-16a8-430a-975d-e6bcaf7aecda)
+
+## Form de Edición
+![image](https://github.com/crisjc6/ejercicio-front/assets/50051312/e1fce5a5-d935-4534-95e0-a434c4fa801d)
+
+## Coverage
+
+![image](https://github.com/crisjc6/ejercicio-front/assets/50051312/ab1110d6-985d-4083-93f4-75c6908cb07c)
+
+
+## Jasmite Complete Test
+![image](https://github.com/crisjc6/ejercicio-front/assets/50051312/a02342ed-0b92-4a2a-844b-9b6b5845a69e)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.5.
 
 ## Development server

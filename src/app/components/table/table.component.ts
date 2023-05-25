@@ -21,7 +21,7 @@ export class TableComponent  implements OnInit{
 
   eliminarProducto(id: string) {
     this.productService.deleteProdcut(id).subscribe(data => {
-      location.reload();
+      alert('Producto Eliminado')
     },error => {
       console.log(error)
       alert('No se pudo eliminar el elemento de base')
