@@ -27,8 +27,7 @@
   }
   
   input[type="text"],
-  input[type="date"],
-  input[type="file"] {
+  input[type="date"] {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
@@ -70,4 +69,34 @@
   .button-group {
     display: flex;
     gap: 10px;
+  }
+
+  button[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  input:disabled {
+    background-color: #f2f2f2;
+    color: #999999;
+    cursor: not-allowed;
+  }
+
+  /* Estilos para campos inválidos */
+.ng-invalid {
+    border-color: #f37676;
+  }
+
+  /* Estilos para campos inválidos */
+.ng-invalid.ng-touched {
+    border-color: #f37676;
+}
+.ng-invalid.ng-touched:focus {
+    border-color: #f37676;
+}
+
+  .text-danger {
+    color: #f37676;
+    font-size: 10px;
+    padding-top: 4px;
   }

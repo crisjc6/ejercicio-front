@@ -10,13 +10,18 @@ const routes: Routes = [
     component: DashboardComponent,
   },
   {
-    path: 'dashboard/update-product',
+    path: 'dashboard/update-product/:id',
     component: UpdateProductComponent
   },
   {
     path: 'dashboard/add-product',
     component: AddProductComponent
   },
+  {
+    path: '',
+    redirectTo: 'dashboard',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

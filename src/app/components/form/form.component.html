@@ -1,35 +1,79 @@
-<form class="form-container" [formGroup]="productoForm" (submit)="addEditProduct()">
+<form class="form-container" [formGroup]="productoForm" (ngSubmit)="addEditProduct()">
     <div class="form-column">
-      <div class="form-group">
-        <label for="id">ID:</label>
-        <input formControlName="description" type="text" id="id" name="id">
-      </div>
-      <div class="form-group">
-        <label for="description">Descripción:</label>
-        <input  formControlName="description" type="text" id="description" name="description">
-      </div>
-      <div class="form-group">
-        <label for="date_release">Fecha de Liberación:</label>
-        <input formControlName="date_release" type="date" id="date_release" name="date_release">
-      </div>
+        <div class="form-group">
+            <label for="id">ID:</label>
+            <input formControlName="id" type="text" id="id" name="id">
+            <div class="text-danger"
+                *ngIf="productoForm.get('id')?.errors?.['required'] && productoForm.get('id')?.touched">
+                <span> Este campo es requerido!
+                </span>
+            </div>
+            <div class="text-danger"
+                *ngIf="productoForm.get('id')?.errors?.['maxlength'] && productoForm.get('id')?.touched">
+                <span> Max 10 Min 3
+                </span>
+            </div>
+            <div class="text-danger"
+                *ngIf="productoForm.get('id')?.errors?.['minlength'] && productoForm.get('id')?.touched">
+                <span> Max 10 Min 3
+                </span>
+            </div>
+            <div class="text-danger"
+                *ngIf="productoForm.get('id')?.errors?.['invalidProductId'] && productoForm.get('id')?.touched">
+                <span> ID no válido!
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción:</label>
+            <input formControlName="description" type="text" id="description" name="description">
+            <div class="text-danger"
+                *ngIf="productoForm.get('description')?.errors && productoForm.get('description')?.touched">
+                <span> Este campo es requerido Min 10 Max 200!
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date_release">Fecha de Liberación:</label>
+            <input formControlName="date_release" type="date" id="date_release" name="date_release">
+            <div class="text-danger"
+                *ngIf="productoForm.get('date_release')?.hasError('required') && productoForm.get('date_release')?.touched">
+                <span> Este campo es requerido!
+                </span>
+            </div>
+            <div class="text-danger"
+            *ngIf="productoForm.get('date_release')?.errors?.['fechaInvalida'] && productoForm.get('date_release')?.touched">
+            <span> Fecha no válida!
+            </span>
+        </div>
+        </div>
     </div>
     <div class="form-column">
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input formControlName="name" type="text" id="name" name="name">
-      </div>
-      <div class="form-group">
-        <label for="logo">Logo:</label>
-        <input formControlName="logo" type="text" id="logo" name="logo">
-      </div>
-      <div class="form-group">
-        <label for="date_revision">Fecha de Revisión:</label>
-        <input formControlName="date_revision" type="date" id="date_revision" name="date_revision">
-      </div>
+        <div class="form-group">
+            <label for="name">Nombre:</label>
+            <input formControlName="name" type="text" id="name" name="name">
+            <div class="text-danger"
+                *ngIf="productoForm.get('name')?.errors && productoForm.get('name')?.touched">
+                <span> Este campo es requerido Min 5 Max 100!
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="logo">Logo:</label>
+            <input formControlName="logo" type="text" id="logo" name="logo">
+            <div class="text-danger"
+                *ngIf="productoForm.get('logo')?.hasError('required') && productoForm.get('logo')?.touched">
+                <span> Este campo es requerido!
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date_revision">Fecha de Revisión:</label>
+            <input formControlName="date_revision" type="date" id="date_revision" name="date_revision">
+        </div>
     </div>
     <div class="form-actions">
-      <button type="reset" class="btn btn-secondary">Reiniciar</button>
-      <button type="submit" [disabled]="productoForm.invalid" class="btn btn-primary">Enviar</button>
+        <button type="reset" class="btn btn-secondary">Reiniciar</button>
+        <button type="submit" [disabled]="productoForm.invalid" class="btn btn-primary">Enviar</button>
     </div>
-  </form>
-  
+</form>

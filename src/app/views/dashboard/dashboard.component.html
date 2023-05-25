@@ -5,6 +5,10 @@
         </div>
     </div>
     <div class="content">
+        <div class="top">
+            <input type="text" class="search-input" [(ngModel)]="searchValue" placeholder="Search..." (keyup)="applyFilter()">
+            <button routerLink="add-product">{{ buttonText }}</button>
+        </div>
         <app-table *ngIf="listaProductos && listaProductos.length > 0" [products]="listaProductos" ></app-table>
     </div>
 </div>

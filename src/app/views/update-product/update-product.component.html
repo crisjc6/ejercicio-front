@@ -1,1 +1,16 @@
-<p>update-product works!</p>
+<div class="container">
+    <div class="header">
+        <div class="title">
+            <img src="../../../assets/img/banco-pichincha-logo.png" alt="log-bp" width="200px">
+        </div>
+    </div>
+    <div class="content">
+        <div class="content__header">
+            <h1>Formulario de Edición</h1>
+            <hr>
+        </div>
+        <div class="content__form">
+            <app-form *ngIf="product" [product]="product"></app-form>
+        </div>
+    </div>
+</div>

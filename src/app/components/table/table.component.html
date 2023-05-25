@@ -1,57 +1,48 @@
-<div class="container">
-    <div class="top">
-        <input type="text" class="search-input" [(ngModel)]="searchValue" placeholder="Search..." (keyup)="applyFilter()">
-        <button routerLink="add-product">{{ buttonText }}</button>
-    </div>
-    <div class="list">
-        <table>
-            <thead>
-                <tr>
-                    <th>Logo</th>
-                    <th>Nombre del producto</th>
-                    <th>Descripción
-                        <i class="material-icons">info</i>
-                    </th>
-                    <th>Fecha de liberación
-                        <i class="material-icons">info</i>
-                    </th>
-                    <th>Fecha de reestructuración
-                        <i class="tiny material-icons">info</i>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of products.slice(0, maxResults).slice(0, resultsPerPage)">
-                    <td class="first-item" > <img [src]="item.logo" alt="" width="32px"></td>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.description }}</td>
-                    <td>{{ item.date_release  | date: 'dd/MM/yyyy' }}</td>
-                    <td>{{ item.date_revision | date: 'dd/MM/yyyy' }}</td>
-                    <td class="dropdown-column">
-                        <div class="dropdown">
-                            <span><i class="material-icons">more_vert</i></span>
-                            <div class="dropdown-content">
-                                <a routerLink="update-product">Editar</a>
-                                <a href="#">Eliminar</a>
-                            </div>
+<div class="list">
+    <table>
+        <thead>
+            <tr>
+                <th>Logo</th>
+                <th>Nombre del producto</th>
+                <th>Descripción
+                    <i class="material-icons">info</i>
+                </th>
+                <th>Fecha de liberación
+                    <i class="material-icons">info</i>
+                </th>
+                <th>Fecha de reestructuración
+                    <i class="tiny material-icons">info</i>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of products.slice(0, maxResults).slice(0, resultsPerPage)">
+                <td class="first-item"> <img [src]="item.logo" alt="" width="32px"></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.date_release | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ item.date_revision | date: 'dd/MM/yyyy' }}</td>
+                <td class="dropdown-column">
+                    <div class="dropdown">
+                        <span><i class="material-icons">more_vert</i></span>
+                        <div class="dropdown-content">
+                            <a [routerLink]="['update-product', item.id]">Editar</a>
+                            <a (click)="eliminarProducto(item.id)">Eliminar</a>
                         </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-        <div class="close-table">
-            <p>{{ products.length >= maxResults ? maxResults : products.length }} Resultados</p>
-            <select id="resultsPerPage" [(ngModel)]="resultsPerPage">
-                <option [value]="5">5</option>
-                <option [value]="10">10</option>
-                <option [value]="20">20</option>
-                <option [value]="40">40</option>
-                <!-- Agrega más opciones según sea necesario -->
-            </select>
-        </div>
-
-
+    <div class="close-table">
+        <p>{{ products.length >= maxResults ? maxResults : products.length }} Resultados</p>
+        <select id="resultsPerPage" [(ngModel)]="resultsPerPage">
+            <option [value]="5">5</option>
+            <option [value]="10">10</option>
+            <option [value]="20">20</option>
+            <option [value]="40">40</option>
+        </select>
     </div>
 </div>

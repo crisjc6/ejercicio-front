@@ -7,9 +7,12 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit{
+export class DashboardComponent implements OnInit {
 
   listaProductos: ProductInterface[] = []
+  buttonText: string = 'Agregar';
+  searchValue: string = '';
+  filteredItems: ProductInterface[] = [];
   constructor(
     private readonly _productService: ProductService,
   ) {
@@ -19,11 +22,20 @@ export class DashboardComponent implements OnInit{
     this.getProducts();
   }
 
-  getProducts () {
+  getProducts() {
     this._productService.getProducts().subscribe(
-      (res: ProductInterface[])=> {
+      (res: ProductInterface[]) => {
         this.listaProductos = res
+        this.filteredItems = res
       }
     )
+  }
+
+  applyFilter() {
+    this.listaProductos = this.searchValue
+    ? this.listaProductos.filter(item =>
+        item.name.toLowerCase().includes(this.searchValue.toLowerCase())
+      )
+    : this.filteredItems;
   }
 }

@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ProductInterface } from '../../interfaces/product.interface';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-table',
@@ -8,24 +9,23 @@ import { ProductInterface } from '../../interfaces/product.interface';
 })
 export class TableComponent  implements OnInit{
   @Input() products: ProductInterface[] = [];
-  buttonText: string = 'Agregar';
   resultsPerPage = 5;
   maxResults = 50;
-  filteredItems: ProductInterface[] = [];
-  searchValue: string = '';
 
-  constructor() {
+  constructor(
+    private readonly productService:ProductService,
+  ) {
   }
   ngOnInit(): void {
-    this.filteredItems = this.products
-  }
-  
-  applyFilter() {
-    this.products = this.searchValue
-    ? this.products.filter(item =>
-        item.name.toLowerCase().includes(this.searchValue.toLowerCase())
-      )
-    : this.filteredItems;
   }
 
+  eliminarProducto(id: string) {
+    this.productService.deleteProdcut(id).subscribe(data => {
+      location.reload();
+    },error => {
+      console.log(error)
+      alert('No se pudo eliminar el elemento de base')
+    })
+
+  }
 }
